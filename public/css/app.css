@@ -1,0 +1,1260 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+/* ====== Reset dasar ====== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --container: 1366px; }
+html, body { height: 100%; margin: 0;}
+body {
+  font-family: 'Ubuntu', sans-serif;
+  color: #111827;
+  background: #fff;
+}
+
+/* ====== Header / Navbar ====== */
+.site-header { position: sticky; top: 0; z-index: 1000; width: 100%; }
+
+.topbar{
+  width: 100%;
+  height: 80px;
+  margin: 0;                 /* jangan center pakai auto */
+  border-radius: 0;          /* hilangkan sudut bulat */
+  overflow: visible;
+
+  background: linear-gradient(90deg, #46074E 0%, #197BD0 80%);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,.15);
+  display: flex; align-items: center;
+}
+
+/* container mengikuti ukuran topbar */
+.container{
+  max-width: 1366px;         /* batasi konten */
+  width: 100%;
+  height: 100%;              /* = 80px */
+  margin: 0 auto;            /* center konten */
+  padding: 0 24px;           /* padding kiri/kanan */
+  display: flex; align-items: center; justify-content: flex-start;
+  gap: 48px;
+}
+
+.brand, .nav, .search, .cta { display:flex; align-items:center; }
+
+/* ====== Brand / Logo ====== */
+.brand{
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none !important;
+  color: #fff !important;
+  font-weight: 700; font-size: 28px; letter-spacing: .4px;
+  margin-right: 40px;       /* jarak logo → menu */
+  margin-left: 0;
+}
+.brand img{ height: 50px; width: auto; }
+.brand:visited{ color: #fff; }
+
+/* ====== Menu ====== */
+.nav{ display: flex; align-items: center; gap: 24px;}
+.nav ul{
+  display: flex; align-items: center; justify-content: flex-start;
+  list-style: none; gap: 55px;
+}
+.nav a{
+  position: relative;
+  color: #fff !important; text-decoration: none !important;
+  font-size: 13px; font-weight: 400; letter-spacing: .2px;
+  padding-bottom: 6px;
+  font-family: 'Ubuntu', sans-serif;
+  transition: opacity .15s ease, border-color .15s ease;
+}
+.nav a::after{
+  content:""; position:absolute; left:0; bottom:0;
+  width:0; height:1.5px; background:#fff; transition: width .2s ease;
+}
+.nav a:hover::after, .nav a.active::after{ width: 100%; }
+.nav a:focus-visible{ outline: none; box-shadow: 0 0 0 2px rgba(255,255,255,.35); border-radius: 2px; }
+
+/* ====== Search ====== */
+.search{
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: auto;
+  margin-right: 22px;   /* 👈 jarak antara search ke CTA */
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search a::after{ content:none !important; }
+.search svg{
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  color: rgba(255,255,255,.4); pointer-events: none;
+}
+.search input{
+  font-family: 'Ubuntu', sans-serif;
+  width: 180px; height: 29px;
+  background: transparent; border: none; outline: none;
+  color: #fff; font-size: 13px;
+  padding: 3px 6px 0px 26px;
+  border-bottom: 1px solid rgba(255,255,255,.55);
+}
+.search input::placeholder{ color: rgba(255,255,255,.7); }
+.search { margin-left: auto; margin-right: 22px; }
+
+/* Hard reset semua efek yang mungkin nempel ke CTA */
+a.cta,
+.cta{
+  display:inline-flex; align-items:center; justify-content:center;
+
+  width:150px;                /* <- fixed width */
+  height:40px; line-height:40px;
+  padding:0 16px;             /* kecilkan padding biar lega */
+  box-sizing:border-box;      /* pastikan width sudah termasuk padding/border */
+  white-space:nowrap;         /* teks tidak membungkus */
+  text-align:center;
+
+  border-radius:20px;
+  background:#195395;
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff !important;
+  font:400 13px 'Ubuntu', sans-serif;
+  text-decoration:none !important;
+  box-shadow:none;
+  transition:filter .15s ease;
+  margin-right:0px;
+}
+.cta:hover{ filter:brightness(1.07); }
+
+.cta::before,
+.cta::after {
+  content: none !important;  /* kalau ada pseudo-elem dari rule lain */
+}
+
+.cta:hover { filter: brightness(1.07) !important; }
+
+/* Spasi kanan wajar; bukan 150px */
+.cta { margin-right: 24px; }
+
+/* Jaga layout kanan */
+.search { margin-left: auto; margin-right: 16px; }
+
+
+/* ===== Hero Section ===== */
+.hero{
+  position: relative;
+  width: 100%;            /* <— ganti dari 100vw */
+  height: 100vh;          /* tetap full tinggi layar */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero::after {
+  content:""; 
+  position:absolute; 
+  inset:0;
+  background: linear-gradient(0deg, rgba(0,0,0,.15), rgba(0,0,0,.05));
+}
+
+.hero-inner{ position: relative; height: 100%; }
+
+/* Kartu gradasi + bayangan */
+
+
+.hero-banner{
+  position: absolute;
+  left: 100px;            /* offset dari kiri (sesuai desainmu) */
+  bottom: 80px;           /* naikkan dari bawah agar nyaman */
+  margin: 0; 
+  width: 550px;
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 350px;
+  margin-left: 100px;
+  padding: 30px 30px 30px 30px;
+  border-radius: 0px;
+  color:#fff;
+  background: linear-gradient(135deg, rgba(85, 7, 103,.98) 0%, rgba(25,123,208,.80) 100%);
+  box-shadow: 0 18px 36px rgba(0,0,0,.30);
+  max-width: 720px;
+}
+
+/* garis vertikal kiri */
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 50px;
+  width: 1px; /* tebal garis */
+  background: rgba(255,255,255,.20); /* warna ungu solid atau bisa pakai gradient juga */
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+/* Teks kiri */
+.hero-text{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px; line-height: 1.45;
+  font-weight: 400; letter-spacing: .4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Tombol kanan di dalam banner */
+.hero-btn{
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: auto;
+  display: inline-flex; align-items:center; justify-content:center;
+  height: 38px; padding: 0 18px;
+  border-radius: 30px;
+  background: transparent; /* transparan */
+  border: 0.5px solid rgba(255,255,255,.6); /* garis tipis */
+  color:#fff;
+  text-decoration:none;
+  font-weight:400; /* tidak bold */
+  font-size: 12.5px;
+  transition: background .15s ease, filter .15s ease;
+}
+.hero-btn:hover{
+  background: rgba(255,255,255,.12);
+  filter: brightness(1.05);
+}
+
+/* ===== Tentang Kami Section ===== */
+.about {
+  background: #fff;
+  padding: 100px 20px 80px;
+  text-align: center;
+}
+
+.about-container {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.about h2 {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #4b4b4b;
+  letter-spacing: .5px;
+  margin-bottom: 60px;
+}
+
+.about p {
+  font-family: 'Ubuntu-Light', sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #555;
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+/* Garis tipis di bawah section (opsional) */
+.about::after {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 1px;
+  margin: 60px auto 0;
+  background: rgba(0,0,0,.08);
+}
+
+/* ===== Services ===== */
+
+/* Pemisah antar section (garis tipis tengah, lebar 80%) */
+.section-sep{
+  position: relative;
+  --gap-top: 90px;            /* tinggi ruang kosong, silakan ubah */
+  padding-top: var(--gap-top);
+  background: #fff;
+}
+.section-sep::before{
+  content:"";
+  position: absolute;
+  left: 10%;                  /* = 80% lebar dan center */
+  right: 10%;
+  top: calc(var(--gap-top) / 2);
+  height: 1px;
+  background: rgba(0,0,0,.08);
+}
+
+
+.services { padding: 60px 20px 90px; background:#fff; }
+.services-wrap{ max-width: 1160px; margin:0 auto; }
+.services h2{
+  font-family: 'Ubuntu', sans-serif;
+  text-align:center; font-size:24px; font-weight:500; letter-spacing:.5px;
+  color:#4b4b4b; margin-bottom:26px;
+}
+
+/* grid: 3 → 2 → 1 kolom */
+.services-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 360px); /* 3 kolom tetap, tiap card 360px */
+  gap: 20px;                               /* jarak horizontal & vertikal = 20px */
+  justify-content: center;                 /* grid di-center dalam container */
+}
+
+/* card */
+.service-card{
+  position:relative;
+  height: 270px;
+  width: 360px;
+  border-radius: 6px;
+  overflow: hidden;
+  display:block;
+  text-decoration:none;
+  box-shadow: 0 10px 24px rgba(0,0,0,0);
+  background: #ddd center/cover no-repeat;
+  background-image: var(--bg);
+}
+
+/* overlay gradasi + side stripe */
+.service-card::before{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(90deg, rgba(72, 7, 78, 80%) 0%, rgba(25, 123, 208, 0) 30%);
+}
+.service-card::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  height: 80%;
+  width: 1px; /* sedikit lebih tebal agar terlihat */
+  border-radius: 10px;
+
+  /* warna abu transparan lembut */
+  background: rgba(255, 255, 255, 0.25); /* putih keabuan transparan */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* sedikit bayangan lembut */
+
+  opacity: 0.8; /* transparansi keseluruhan */
+}
+
+/* judul */
+.service-title{
+  font-family: 'Ubuntu', sans-serif;
+  position:absolute; left: 26px; bottom: 25px;
+  color:#fff; font-size:14px; font-weight:400; letter-spacing:.2px;
+}
+
+/* hover */
+.service-card:hover{
+  transform: translateY(-2px);
+  transition: transform .15s ease, filter .15s ease;
+  filter: brightness(1.03);
+}
+
+/* ===== Partners ===== */
+.partners {
+  padding: 60px 20px 90px;
+  background: #fff;
+  text-align: center; /* Center text inside .partners */
+}
+
+.partners-wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* Heading */
+.partners h2 {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #4b4b4b;
+  letter-spacing: 0.4px;
+  margin-bottom: 26px;
+}
+
+/* Grid logo */
+.partners-grid {
+  display: flex; /* Use flexbox for easier centering */
+  flex-wrap: wrap;
+  justify-content: center; /* Center the cards */
+  gap: 20px;
+  margin: 50px auto 100px auto;
+  padding: 0 20px;
+  max-width: 1160px;
+}
+
+.partner-card {
+  height: 150px;
+  width: 216px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.partner-card img {
+  max-width: 85%;
+  max-height: 200%;
+  object-fit: contain;
+  height: 113;
+  width: 200;
+}
+
+/* CTA banner */
+.partners-cta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 24px;
+  max-width: 85%;
+  margin: 0 auto; /* Tambahkan ini untuk center */
+  border-radius: 5px;
+  background: linear-gradient(90deg, #6e0f7b 0%, #197BD0 100%);
+  color: #fff;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+}
+.partners-cta .cta-copy{ flex: 1; }
+.cta-title {
+  font-family: 'Ubuntu', sans-serif; /* Tambahkan font-family */
+  font-weight: 400;
+  font-size: 25px;
+  letter-spacing: .4px;
+  margin-bottom: 6px;
+  margin-left: 20px;
+  text-align: left; /* Tambahkan align kiri */
+}
+.cta-sub{ opacity:.9; font-size: 18px; 
+  font-family: 'Ubuntu', sans-serif; /* Tambahkan font-family */
+  font-weight: 400;
+  letter-spacing: .4px;
+  margin-left: 20px;
+  margin-bottom: 6px;
+  text-align: left; /* Tambahkan align kiri */}
+
+/* CTA button */
+.cta-action{
+  display:inline-flex; align-items:center; justify-content:center;
+  height: 42px; padding: 0 22px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.55);
+  color:#fff; text-decoration:none; font-weight:700; font-size:14px;
+  gap: 8px;
+}
+.cta-action:hover{ background: rgba(255,255,255,.26); }
+
+
+/* ===== Artikel ===== */
+.articles {
+  padding: 0;
+  padding-bottom: 80px;
+  background: #fff;
+  text-align: center;
+}
+
+.articles-wrap {
+  max-width: 800px; /* Bisa disesuaikan sesuai lebar total grid */
+  margin: 0 auto;
+}
+
+.articles h2 {
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  color: #4b4b4b;
+  letter-spacing: .3px;
+  margin-bottom: 50px;
+}
+
+.articles-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 28px;
+  justify-items: center;
+}
+
+/* Card */
+.article-card{
+  width: 360px;               /* sesuai permintaan */
+  background: #fff;           /* panel putih untuk judul */
+  border-radius: 8px;         /* sudut luar halus seperti contoh */
+  box-shadow: 0 6px 18px rgba(0,0,0,.10);
+  display: block;             /* perbaiki "display: absolute" */
+  overflow: hidden;           /* biar gambar ikut rounded di atas */
+  text-decoration: none;
+  color: #333;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.article-thumb{
+  width: 100%;
+  height: 195px;              /* sesuai permintaan */
+  background: #ddd center/cover no-repeat;
+  background-image: var(--img);
+  /* sudut atas membulat; bawah lurus agar menyatu dg panel judul */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.article-title{
+  padding: 12px 16px 16px;    /* panel judul seperti gambar */
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #4b4b4b;
+  text-align: center;
+  background: #fff;           /* pastikan putih */
+  margin: 0;                  /* hilangkan gap ekstra */
+}
+
+.article-card:hover .article-thumb {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  transition: .18s ease;
+}
+
+/* Tombol Lainnya */
+.articles-more{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 44px;
+  padding: 0 26px;
+  border-radius: 999px;
+
+  /* trik 2 background: isi putih, border gradasi */
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(90deg, #6e0f7b, #197BD0) border-box;
+  border: 2px solid transparent;
+
+  color: #5A95D6;                    /* biru muda untuk teks */
+  text-decoration: none;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;                   /* seperti contoh: semi-bold */
+  font-size: 14px;
+  letter-spacing: .4px;
+
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  margin: 70px auto 0;                /* tetap di tengah */
+}
+
+.articles-more:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.12);
+  filter: brightness(1.02);
+}
+.articles-more:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(25,123,208,.25), 0 6px 16px rgba(0,0,0,.08);
+}
+
+
+/* ===== Hubungi Kami ===== */
+
+.contact-footer{
+  background:#fff;
+  color:#444;
+  text-align:center;
+  padding-top: 10px;
+}
+
+.contact-container{
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contact-container h2{
+  font-family: 'Ubuntu', sans-serif;
+  font-size:24px;
+  font-weight:500;
+  margin-bottom:30px;
+  letter-spacing:.4px;
+}
+
+.contact-container h3{
+  font-family: 'Ubuntu', sans-serif;
+  font-size:18px;
+  font-weight:500;
+  color:#555;
+  margin-bottom:15px;
+}
+
+.contact-container p{
+  font-family: 'Ubuntu', sans-serif;
+  font-size:16px;
+  line-height:1.8;
+  font-weight: 250;
+  margin-bottom:50px;
+  color:#555;
+}
+
+/* Tombol */
+.contact-actions{
+  display:flex;
+  justify-content:center;
+  gap:90px;
+  flex-wrap:wrap;
+}
+
+/* tombol gradient */
+.btn-gradient{
+  font-family: 'Ubuntu', sans-serif;
+  display:inline-flex; align-items:center; justify-content:center;
+  height:42px; padding:0 50px;
+  border-radius:999px;
+  background:linear-gradient(90deg, rgba(70, 7, 78, 0.8), rgba(25, 123, 208, 0.6));
+  color:#fff; text-decoration:none;
+  font-weight:400; font-size:14px;
+  transition:filter .15s ease;
+}
+.btn-gradient:hover{ filter:brightness(1.1); }
+
+/* tombol outline */
+.btn-outline{
+  font-family: 'Ubuntu', sans-serif;
+  display:inline-flex; align-items:center; justify-content:center;
+  height:42px; padding:0 50px;
+  border-radius:999px;
+  border:1px solid #197BD0;
+  color:#197BD0; text-decoration:none;
+  font-weight:400; font-size:14px;
+  transition:all .15s ease;
+}
+.btn-outline:hover{
+  background:rgba(25,123,208,0.08);
+}
+
+/* ===== Footer bawah ===== */
+
+/* ===== Hubungi Kami (global, dipakai di semua page) ===== */
+.contact-footer{
+  position: relative;
+  --gap-top: 120px;
+
+  padding-top: var(--gap-top);  
+  background: #fff;            
+}
+
+/* garis tepat di tengah ruang kosong di atas judul */
+.contact-footer::before{
+  content: "";
+  position: absolute;
+  left: 10%;                 
+  right: 10%;
+  top: calc(var(--gap-top) / 5); 
+  height: 1px;
+  background: rgba(0,0,0,.08);
+}
+
+/* pastikan judul tidak nambah jarak ke atas */
+.contact-container h2{
+  margin-top: 0;
+}
+
+.site-footer{
+  font-family: 'Ubuntu', sans-serif;
+  height: 80px;
+  margin-top:60px;
+  background:linear-gradient(90deg, #46074E 0%, #197BD0 80%);
+  color:#fff;
+  align-content: center;
+  font-size:13px;
+  font-weight:400;
+  letter-spacing:.3px;
+  text-align:center;
+  padding:18px 20px;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 980px){
+  .container{ padding: 0 16px; }
+  .nav{ position: absolute; left: 0; right: 0; top: 80px; display: none; }
+  .nav.open{ display: block; }
+  .nav ul{ flex-direction: column; gap: 16px; padding: 14px 20px;
+           background: linear-gradient(90deg, #46074E 0%, #197BD0 80%); }
+  .search{ margin: 10px auto 10px 12px; }
+  .search input{ width: 100%; }
+}
+
+@media (max-width: 980px){
+  .hero{ min-height: 440px }
+  .hero-banner{
+    left: 24px; right: 24px; width: auto;
+    top: 56%;
+    gap: 12px; height: auto; min-height: 64px; padding: 12px 12px 12px 16px;
+    transform: translateY(-50%);
+    flex-wrap: wrap;
+  }
+  .hero-text{ font-size: 13px; white-space: normal }
+  .hero-btn{ width: 150px; height: 36px }
+}
+
+/* ===== Breakpoints ===== */
+/* tablet: 2 kolom */
+@media (max-width: 1024px){
+  .services-grid{ grid-template-columns: repeat(2, 1fr); }
+  .service-card{ height: 180px; }
+}
+/* mobile: 1 kolom */
+@media (max-width: 640px){
+  .services{ padding: 40px 16px 60px; }
+  .services-grid{ grid-template-columns: 1fr; gap:14px; }
+  .service-card{ height: 180px; }
+  .service-title{ left: 20px; bottom: 16px; }
+}
+
+@media (max-width: 1024px){
+  .articles-wrap{ max-width: 860px; }
+}
+
+/* Mobile: 1 kolom */
+@media (max-width: 640px){
+  .articles-grid{ grid-template-columns: 1fr; }
+}
+
+/* ====== SCOPE: tentang kami ====== */
+:root{
+  --about-container: 1160px;   
+  --about-grid-w: 1006px;     
+  --gap: 36px;
+  --text: #4a4a4a;
+}
+
+/* Banner - tentang kami */
+.about-hero{
+  position:relative; width:100%; height:500px;
+  background:center/cover no-repeat; overflow:hidden;
+}
+.about-hero__overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(70,7,78,.80) 0%, rgba(25,123,208,0) 100%);
+  display:flex; align-items:flex-end; justify-content:center;
+}
+.about-hero__inner{
+  width:100%; max-width:var(--about-container);
+  margin:0 auto; padding:0 20px 22px; display:flex; align-items:flex-end;
+}
+.about-hero__title{
+  color:#fff; font-family:'Ubuntu', sans-serif; font-weight:600;
+  font-size:36px; letter-spacing:1px; line-height:1; text-align:left;
+}
+
+/* Konten */
+.about-main{ background:#fff; padding:100px 20px 80px; }
+.about-container{ max-width:var(--about-container); margin:0 auto; }
+
+/* Frame 1006px = acuan kiri yang sama untuk profil, grid, CTA */
+.about-frame{ width:var(--about-grid-w); margin:0 auto; }
+
+/* Profil */
+.about-title{
+  font: 500 24px 'Ubuntu', sans-serif; color:#4b4b4b; margin:0 0 20px; text-align:left;
+}
+.about-desc{
+  font: 300 16px/1.75 'Ubuntu', sans-serif; color:#4b4b4b;
+  width:800px;               
+  text-align:justify; margin:0;  
+}
+
+/* ===== Visi & Misi ===== */
+.about-vm{ margin-top:84px; }
+
+.about-vm__grid{
+  display:grid; width:var(--about-grid-w);
+  grid-template-columns: 485px 485px;
+  column-gap: var(--gap);
+}
+.about-vm__card{ display:flex; flex-direction:column; }
+
+.about-vm__img{
+  width:485px; aspect-ratio:485/253; object-fit:cover;
+  border-radius:6px; background:#eee;
+  box-shadow:0 10px 24px rgba(0,0,0,.10);
+  margin:0 0 18px;
+}
+
+.about-vm__title{
+  font: 600 16px 'Ubuntu', sans-serif; color:var(--text);
+  letter-spacing:.2px; margin:0 0 10px;
+}
+.about-vm__text{
+  font: 300 16px/1.9 'Ubuntu', sans-serif; color:var(--text);
+  width:485px; text-align:justify;
+}
+
+/* CTA – kiri sejajar grid, 100px di bawah grid (handoff) */
+.about-vm__cta-wrap{
+  width:100%;
+  margin-top:100px;
+  display:flex;
+  justify-content:center;  
+}
+
+.about-vm__cta{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:42px; padding:0 24px; border-radius:999px;
+  border:1px solid rgba(25,123,208,.55); color:#195395; text-decoration:none; font-weight:500;
+  box-shadow:0 2px 10px rgba(0,0,0,.06); transition:background .15s ease;
+}
+
+.about-vm__cta:hover{ background:rgba(25,123,208,.06); }
+
+/* ===== Responsive (biar tetap rapi, fokus desktop persis handoff) ===== */
+@media (max-width:1200px){
+  .about-frame, .about-vm__grid, .about-vm__cta-wrap{ width:100%; }
+  .about-vm__grid{ grid-template-columns:1fr; row-gap:28px; }
+  .about-desc{ width:100%; }
+  .about-vm__img, .about-vm__text{ width:100%; }
+  .about-vm{ margin-top:48px; }
+  .about-vm__cta-wrap{ margin-top:40px; }
+}
+@media (max-width:480px){
+  .about-hero{ height:250px; }
+  .about-hero__title{ font-size:22px; }
+  .about-hero__inner{ padding-bottom:14px; }
+}
+
+/* ===== Scope: Services page only ===== */
+:root { --svc-container: 1160px; }
+
+/* Banner 500px + overlay sama seperti about */
+.svc-hero{
+  position:relative; width:100%; height:500px;
+  background:center/cover no-repeat; overflow:hidden;
+}
+.svc-hero__overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(90deg, rgba(70,7,78,.80) 0%, rgba(25,123,208,0) 100%);
+  display:flex; align-items:flex-end; justify-content:center;
+}
+.svc-hero__inner{
+  width:100%; max-width:var(--svc-container);
+  margin:0 auto; padding:0 20px 22px; display:flex; align-items:flex-end;
+}
+.svc-hero__title{
+  color:#fff; font-family:'Ubuntu', sans-serif; font-weight:600;
+  font-size:36px; letter-spacing:1px; line-height:1; text-align:left;
+}
+
+/* Main */
+.svc-main{ background:#fff; padding:60px 20px 90px; }
+.svc-container{ max-width:var(--svc-container); margin:0 auto; }
+
+/* Grid 3×2 (desktop), jarak & ukuran seperti mockup */
+.svc-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Card: 360×180ish, radius 8, overlay ungu → transparan + side stripe */
+.svc-card{
+  position:relative; display:block; height:180px; border-radius:8px;
+  background: #ddd center/cover no-repeat;
+  background-image: var(--img);
+  overflow:hidden; text-decoration:none;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  isolation:isolate;  /* overlay di atas background */
+}
+
+/* overlay gradasi */
+.svc-card__overlay{
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(90deg, rgba(72,7,78,.72) 0%, rgba(25,123,208,0) 65%);
+}
+
+/* stripe tipis di kiri */
+.svc-card__stripe{
+  position:absolute; left:14px; top:10%; bottom:10%; width:2px; z-index:2;
+  background: linear-gradient(180deg, #46074E, #197BD0);
+  opacity:.8; border-radius:2px;
+}
+
+/* judul */
+.svc-card__title{
+  position:absolute; left:28px; bottom:20px; right:18px; z-index:3;
+  color:#fff; font-family:'Ubuntu', sans-serif; font-weight:500; font-size:18px;
+  letter-spacing:.2px; line-height:1.3;
+}
+
+/* Hover */
+.svc-card:hover{ transform: translateY(-2px); transition:.15s ease; filter:brightness(1.04); }
+
+/* Responsive */
+@media (max-width: 1024px){
+  .svc-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .svc-hero{ height:320px; }
+  .svc-hero__title{ font-size:28px; }
+  .svc-grid{ grid-template-columns: 1fr; }
+}
+@media (max-width: 480px){
+  .svc-hero{ height:250px; }
+  .svc-hero__title{ font-size:22px; }
+  .svc-hero__inner{ padding-bottom:14px; }
+}
+
+/* ===========================
+   MOBILE-ONLY PATCH (≤ 980px)
+   =========================== */
+@media (max-width: 980px){
+  /* cegah horizontal scroll di mobile */
+  html, body { overflow-x: hidden; }
+
+  /* header lebih kompakt di mobile */
+  .topbar{ height: 64px; }
+  .container{
+    padding: 0 14px;
+    gap: 12px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  /* tombol hamburger (hanya muncul di mobile) */
+  .nav-toggle{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border: 0; background: transparent;
+    color: #fff; cursor: pointer;
+    /* jangan ganggu layout desktop (dihilangkan di >980px) */
+  }
+  .nav-toggle:focus-visible{ outline: 2px solid rgba(255,255,255,.35); border-radius: 6px; }
+  .nav-toggle svg{ width: 22px; height: 22px; }
+
+  /* brand mengecil sedikit agar muat baris */
+  .brand{ font-size: 20px; margin-right: 8px; }
+  .brand img{ height: 36px; }
+
+  /* nav jadi dropdown fixed di bawah topbar, full width */
+  .nav{
+    position: fixed;
+    left: 0; right: 0; top: 64px;
+    display: none; /* default tertutup */
+    background: linear-gradient(90deg, #46074E 0%, #197BD0 80%);
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    padding: 14px 20px;
+    z-index: 999; /* di atas konten */
+  }
+  .nav.open{ display: block; }
+  .nav ul{
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* search & CTA turun ke bawah agar lega */
+  .search{
+    order: 99;
+    width: 100%;
+    margin: 10px 0 0;
+  }
+  .search input{
+    width: 100%;
+    min-width: 0;
+  }
+  .cta{
+    order: 100;
+    width: 100%;
+    margin: 10px 0 0;
+    height: 42px;
+  }
+}
+
+/* ===========================
+   HERO FIX (≤ 980px)
+   - hilangkan offset ganda dan pakai lebar responsif
+   =========================== */
+@media (max-width: 980px){
+  .hero{
+    height: auto;               /* jangan paksa 100vh di mobile */
+    min-height: 70svh;          /* lebih aman vs address bar */
+  }
+  .hero-banner{
+    left: 16px; right: 16px;
+    width: auto;                 /* isi full padding */
+    bottom: 24px;                /* posisikan di bawah */
+    top: auto;                   /* pastikan tak pakai top */
+    transform: none;             /* reset */
+    margin-left: 0;              /* HAPUS offset ganda */
+    margin-top: 0;               /* HAPUS offset ganda */
+    padding: 14px 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .hero-banner::before{ left: 12px; bottom: 12px; }
+  .hero-text{ font-size: 12.5px; white-space: normal; }
+  .hero-btn{ height: 36px; padding: 0 14px; }
+}
+
+/* ===========================
+   SERVICES GRID FIX
+   - kartu jangan pakai width fixed di mobile
+   =========================== */
+@media (max-width: 640px){
+  .services{ padding: 40px 16px 60px; }
+  .services-grid{
+    grid-template-columns: 1fr;
+    gap: 14px;
+    justify-items: stretch;      /* isi penuh */
+  }
+  .service-card{
+    width: 100%;                 /* override dari 360px */
+    height: 180px;
+  }
+  .service-title{ left: 20px; bottom: 16px; }
+}
+
+/* ===========================
+   ARTICLES GRID FIX
+   - kartu isi penuh, tambah padding sisi
+   =========================== */
+@media (max-width: 640px){
+  .articles-wrap{ max-width: 100%; padding: 0 16px; }
+  .articles-grid{ grid-template-columns: 1fr; }
+  .article-card{ width: 100%; }   /* override dari 360px */
+  .article-thumb{ height: 190px; }
+}
+
+/* ===========================
+   PARTNERS FIX
+   - grid logo lebih fleksibel; CTA rapi saat sempit
+   =========================== */
+@media (max-width: 640px){
+  .partners-grid{
+    gap: 14px;
+    padding: 0 16px;
+  }
+  .partner-card{
+    width: 46%;
+    min-width: 150px;
+    height: 120px;
+    padding: 16px;
+  }
+  .partners-cta{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 24px 18px;
+    max-width: 92%;
+  }
+  .cta-title, .cta-sub{ margin-left: 0; text-align: left; }
+  .cta-action{ align-self: flex-start; }
+}
+
+/* ===========================
+   ABOUT & SERVICES PAGE HERO FIX
+   - judul & tinggi hero lebih pas di mobile kecil
+   =========================== */
+@media (max-width: 480px){
+  .about-hero, .svc-hero{ height: 250px; }
+  .about-hero__inner, .svc-hero__inner{ padding-bottom: 14px; }
+  .about-hero__title, .svc-hero__title{ font-size: 22px; }
+}
+
+/* ===========================
+   MISC QUALITY-OF-LIFE
+   =========================== */
+@media (max-width: 980px){
+  /* kurangi gap menu besar di desktop agar tak “mendorong” konten */
+  .container.header-grid{ gap: 10px; }
+  /* rapikan underline hover yang kepanjangan di mobile (opsional) */
+  .nav a{ padding-bottom: 4px; }
+  .nav a::after{ height: 1.5px; }
+}
+
+/* sembunyikan tombol hamburger di desktop */
+@media (min-width: 981px){
+  .nav-toggle{ display: none !important; }
+}
+
+/* pastikan header di atas hero */
+.site-header, .topbar {
+  position: relative;
+  z-index: 2000 !important;
+}
+
+/* nav mobile (dropdown) di atas hero */
+@media (max-width: 980px){
+  .nav{
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    z-index: 1999; /* masih di bawah tombol */
+  }
+}
+
+/* sembunyikan search & CTA di desktop, munculkan di mobile */
+@media (min-width: 981px){
+  .nav .search, .nav .cta { display: none !important; }
+}
+@media (max-width: 980px){
+  .nav .search, .nav .cta {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 12px;
+  }
+  .nav .cta {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 980px){
+  .desktop-only { display: none !important; }
+  .mobile-only  { display: flex !important; }
+}
+@media (min-width: 981px){
+  .desktop-only { display: flex !important; }
+  .mobile-only  { display: none !important; }
+}
+
+/* supaya .mobile-only di dalam nav rapi kolom */
+@media (max-width: 980px){
+  .nav .mobile-only{ flex-direction: column; align-items: stretch; gap: 10px; }
+  .nav .mobile-only.cta{ justify-content: center; }
+}
+
+.site-header, .topbar { position: sticky; top: 0; z-index: 2000; }
+@media (max-width: 980px){
+  .nav{
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    z-index: 1999;
+  }
+}
+
+/* ===== FINAL HAMBURGER CLICK FIX (≤980px) — tempel PALING BAWAH ===== */
+@media (max-width: 980px){
+  /* Samakan tinggi header, dan pastikan header di atas panel nav */
+  .topbar{
+    height: 64px !important;
+    position: sticky;
+    top: 0;
+    z-index: 5000 !important;   /* header di atas konten */
+  }
+
+  /* Tombol hamburger SELALU di paling atas (bisa diklik) */
+  .topbar .nav-toggle{
+    position: relative !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Panel menu tepat di bawah header, tapi DI BAWAH tombol */
+  .nav{
+    position: fixed !important;
+    top: 64px !important;
+    left: 0; right: 0;
+    z-index: 6000 !important;   /* < 9999 agar tidak menutupi tombol */
+    display: none;               /* default tertutup */
+    background: linear-gradient(90deg, #46074E 0%, #197BD0 80%);
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    padding: 14px 20px;
+  }
+  .nav.open{ display: block !important; }
+}
+
+/* ===== NAV MOBILE ===== */
+@media (max-width: 980px){
+  /* tombol muncul */
+  .menu-toggle{ display:inline-flex; align-items:center; justify-content:center; }
+
+  /* hemat ruang header */
+  .search, .cta{ display:none; }
+
+  /* dropdown nav */
+  .nav{
+    position:absolute; left:0; right:0; top:80px; /* tepat di bawah topbar */
+    display:none; z-index:1050;
+    background: linear-gradient(90deg, #46074E 0%, #197BD0 80%);
+    box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  }
+  .nav.open{ display:block; }
+
+  .nav ul{
+    display:flex; flex-direction:column;
+    gap:12px; padding:14px 20px;
+  }
+  .nav a{
+    display:block; padding:10px 2px;
+    font-size:14px; /* sedikit lebih besar di mobile */
+  }
+
+  /* container kasih padding biar isi tak mepet */
+  .topbar .container{ padding: 0 12px; justify-content: flex-start; }
+  .brand{ margin-left: 8px; margin-right: auto; } /* brand kiri, tombol di kanan */
+}
+
+/* ===== NAV/TOGGLE FINAL PATCH (letakkan PALING BAWAH) ===== */
+
+/* Gaya dasar tombol hamburger */
+.menu-toggle{
+  display: none;                /* default: tersembunyi (desktop) */
+  width: 40px; height: 40px;
+  border: 0; background: transparent;
+  align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.menu-toggle span{
+  display:block; width:22px; height:2px; margin:4px 0; background:#fff;
+  transition:transform .2s ease, opacity .2s ease;
+}
+/* animasi X kecil saat aktif (opsional) */
+.menu-toggle.active span:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+.menu-toggle.active span:nth-child(2){ opacity: 0; }
+.menu-toggle.active span:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+
+/* DESKTOP (≥981px): tombol hilang, menu tampil normal */
+@media (min-width: 981px){
+  .menu-toggle{ display: none !important; }
+  #mainNav{
+    position: static !important;
+    display: flex !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  #mainNav ul{
+    flex-direction: row !important;
+    gap: 55px !important;
+    padding: 0 !important;
+  }
+}
+
+/* MOBILE (≤980px): tombol muncul, nav jadi dropdown */
+@media (max-width: 980px){
+  .menu-toggle{ display: inline-flex !important; }
+
+  /* panel nav disembunyikan default, muncul saat .open */
+  #mainNav{
+    position: fixed !important;
+    top: 64px !important;       /* tinggi topbar versi mobile */
+    left: 0; right: 0;
+    display: none !important;
+    background: linear-gradient(90deg, #46074E 0%, #197BD0 80%) !important;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    padding: 14px 20px;
+    z-index: 6000;              /* di bawah tombol */
+  }
+  #mainNav.open{ display: block !important; }
+
+  #mainNav ul{
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 0 !important;      /* padding sudah di nav */
+  }
+}
+
