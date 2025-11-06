@@ -1,3 +1,5 @@
+{{-- Abdurrahman Arrasyid - 41523010175 --}}
+
 @extends('layouts.app')
 @section('title', 'Beranda')
 

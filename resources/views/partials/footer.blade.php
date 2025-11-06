@@ -1,3 +1,5 @@
+{{-- Abdurrahman Arrasyid - 41523010175 --}}
+
 <footer class="contact-footer">
   {{-- ===== Hubungi Kami ===== --}}
   <section class="contact">
